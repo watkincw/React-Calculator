@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 function Calculator() {
     let sum = () => {
@@ -136,7 +137,7 @@ function Calculator() {
     return (
         <div>
             <h1 className="tableCap">
-                Simple Calculator
+                React Calculator
             </h1>
             <p className="tableRule">
                 Click the '=' button for the answer!
