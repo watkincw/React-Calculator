@@ -1,138 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
 function Calculator() {
-    let sum = () => {
-        // get first and second input value
-        let num1 = Number(document.getElementById('addOne').value);
-        let num2 = Number(document.getElementById('addTwo').value);
+    // Addition
+    const [addOne, setAddOne] = useState(0);
+    const [addTwo, setAddTwo] = useState(0);
+    const [totalSum, setTotalSum] = useState(addOne + addTwo);
 
-        // if either field is blank, tell them they cant be
-        if (num1 === '' || num2 === '') {
-            // get, or in other words 'target' or 'select', the hidden div on line ~112 with the ID of 'hidden'. The div is hidden using CSS. Check the CSS file to see how I did this with the 'hide' className
-            let hidden = document.getElementById('hidden');
+    function sum() {
+        setTotalSum(addOne + addTwo);
+    };
 
-            // remove 'hide' className from list of classNamees the div has assigned to it
-            hidden.classNameList.remove('hide');
-            
-            // setTimeout(function(), delay in milliseconds) delays what comes next before moving forward with the rest of the function, then completes a task specified with another function after the specified time 
-            setTimeout(function() {
-                // re-add 'hide' className to list of classNamees the div has assigned to it after 3000 milliseconds(specified at the end of the function)
-                hidden.classNameList.add('hide');
-            }, 3000);
+    // Subtraction
+    const [subOne, setSubOne] = useState(0);
+    const [subTwo, setSubTwo] = useState(0);
+    const [totalSub, setTotalSub] = useState(subOne - subTwo);
 
-            // 'return' exits the entire sum fuction, not allowing what comes next to execute
-            return
-        }
+    function subtract() {
+        setTotalSub(subOne - subTwo);
+    };
+    
+    // Multiplication
+    const [multiplyOne, setMultiplyOne] = useState(0);
+    const [multiplyTwo, setMultiplyTwo] = useState(0);
+    const [totalMultiply, setTotalMultiply] = useState(multiplyOne * multiplyTwo);
 
-        // add them together
-        let total = num1 + num2;
-        let result;
-        // round to 2 decimal places, if neccessary
-        result = Math.round(total*100)/100;
+    function multiply() {
+        setTotalMultiply(multiplyOne * multiplyTwo);
+    };
+    
+    // Division
+    const [divideOne, setDivideOne] = useState(0);
+    const [divideTwo, setDivideTwo] = useState(0);
+    const [totalDivide, setTotalDivide] = useState(divideOne / divideTwo);
 
-        // dispaly sum in results box
-        document.getElementById('sum').value = result;
-    }
-
-    let dif = () => {
-        // get first and second input value
-        let num1 = Number(document.getElementById('subtractOne').value);
-        let num2 = Number(document.getElementById('subtractTwo').value);
-
-        // if either field is blank, tell them they cant be
-        if (num1 === '' || num2 === '') {
-            // get, or in other words 'target' or 'select', the hidden div on line ~112 with the ID of 'hidden'. The div is hidden using CSS. Check the CSS file to see how I did this with the 'hide' className
-            let hidden = document.getElementById('hidden');
-
-            // remove 'hide' className from list of classNamees the div has assigned to it
-            hidden.classNameList.remove('hide');
-            
-            // setTimeout(function(), delay in milliseconds) delays what comes next before moving forward with the rest of the function, then completes a task specified with another function after the specified time 
-            setTimeout(function() {
-                // re-add 'hide' className to list of classNamees the div has assigned to it after 3000 milliseconds(specified at the end of the function)
-                hidden.classNameList.add('hide');
-            }, 3000);
-
-            // 'return' exits the entire sum fuction, not allowing what comes next to execute
-            return
-        }
-
-        // subtract
-        let total = num1 - num2;
-        let result;
-        // round to 2 decimal places, if neccessary
-        result = Math.round(total*100)/100;
-
-        // dispaly sum in results box
-        document.getElementById('dif').value = result;
-    }
-
-    let multiply = () => {
-        // get first and second input value
-        let num1 = Number(document.getElementById('multiplyOne').value);
-        let num2 = Number(document.getElementById('multiplyTwo').value);
-
-        // if either field is blank, tell them they cant be
-        if (num1 === '' || num2 === '') {
-            // get, or in other words 'target' or 'select', the hidden div on line ~112 with the ID of 'hidden'. The div is hidden using CSS. Check the CSS file to see how I did this with the 'hide' className
-            let hidden = document.getElementById('hidden');
-
-            // remove 'hide' className from list of classNamees the div has assigned to it
-            hidden.classNameList.remove('hide');
-            
-            // setTimeout(function(), delay in milliseconds) delays what comes next before moving forward with the rest of the function, then completes a task specified with another function after the specified time 
-            setTimeout(function() {
-                // re-add 'hide' className to list of classNamees the div has assigned to it after 3000 milliseconds(specified at the end of the function)
-                hidden.classNameList.add('hide');
-            }, 3000);
-
-            // 'return' exits the entire sum fuction, not allowing what comes next to execute
-            return
-        }
-
-        // multiply
-        let total = num1 * num2;
-        let result;
-        // round to 2 decimal places, if neccessary
-        result = Math.round(total*100)/100;
-
-        // dispaly total in results box
-        document.getElementById('multiply').value = result;
-    }
-
-    let divide = () => {
-        // get first and second input value
-        let num1 = Number(document.getElementById('divideOne').value);
-        let num2 = Number(document.getElementById('divideTwo').value);
-
-        // if either field is blank, tell them they cant be
-        if (num1 === '' || num2 === '') {
-            // get, or in other words 'target' or 'select', the hidden div on line ~112 with the ID of 'hidden'. The div is hidden using CSS. Check the CSS file to see how I did this with the 'hide' className
-            let hidden = document.getElementById('hidden');
-
-            // remove 'hide' className from list of classNamees the div has assigned to it
-            hidden.classNameList.remove('hide');
-            
-            // setTimeout(function(), delay in milliseconds) delays what comes next before moving forward with the rest of the function, then completes a task specified with another function after the specified time 
-            setTimeout(function() {
-                // re-add 'hide' className to list of classNamees the div has assigned to it after 3000 milliseconds(specified at the end of the function)
-                hidden.classNameList.add('hide');
-            }, 3000);
-
-            // 'return' exits the entire sum fuction, not allowing what comes next to execute
-            return
-        }
-
-        // divide
-        let total = num1 / num2;
-        let result;
-        // round to 2 decimal places, if neccessary
-        result = Math.round(total*100)/100;
-
-        // dispaly sum in results box
-        document.getElementById('divide').value = result;
-    }
+    function divide() {
+        setTotalDivide(divideOne / divideTwo);
+    };
 
     return (
         <div>
@@ -146,89 +50,105 @@ function Calculator() {
 
                 <tbody>
                     <td>
-                        <p>
-                            Add:
-                        </p>
+                        <p>Add:</p>
                     </td>
                     <td>
-                        <input type="number" id="addOne" />
+                        <input
+                            type="number"
+                            value={addOne}
+                            onChange={e => setAddOne(+e.target.value)}
+                        />
                     </td>
                     <td>
-                        <p>
-                            +
-                        </p>
+                        <p>+</p>
                     </td>
                     <td>
-                        <input type="number" id="addTwo" />
+                        <input
+                            type="number"
+                            value={addTwo}
+                            onChange={e => setAddTwo(+e.target.value)}
+                        />
                     </td>
                     <td>
-                        <button onClick={sum}>=</button> <input type="number" id="sum" />
-                    </td>
-                </tbody>
-
-                <tbody>
-                    <td>
-                        <p>
-                            Subtract: 
-                        </p>
-                    </td>
-                    <td>
-                        <input type="number" id="subtractOne" />
-                    </td>
-                    <td>
-                        <p>
-                            -
-                        </p>
-                    </td>
-                    <td>
-                        <input type="number" id="subtractTwo" />
-                    </td>
-                    <td>
-                        <button onClick={dif}>=</button> <input type="number" id="dif" />
+                        <button onClick={sum}>=</button> <input type="number" id="sum" value={totalSum} readOnly />
                     </td>
                 </tbody>
 
                 <tbody>
                     <td>
-                        <p>
-                            Multiply:
-                        </p>
+                        <p>Subtract:</p>
                     </td>
                     <td>
-                        <input type="number" id="multiplyOne" />
+                        <input
+                            type="number"
+                            value={subOne}
+                            onChange={e => setSubOne(+e.target.value)}
+                        />
                     </td>
                     <td>
-                        <p>
-                            x
-                        </p>
+                        <p>-</p>
                     </td>
                     <td>
-                        <input type="number" id="multiplyTwo" />
+                        <input
+                            type="number"
+                            value={subOne}
+                            onChange={e => setSubTwo(+e.target.value)}
+                        />
                     </td>
                     <td>
-                        <button onClick={multiply}>=</button> <input type="number" id="multiply" />
+                        <button onClick={subtract}>=</button> <input type="number" id="dif" value={totalSub} readOnly />
                     </td>
                 </tbody>
 
                 <tbody>
                     <td>
-                        <p>
-                            Divide:
-                        </p>
+                        <p>Multiply:</p>
                     </td>
                     <td>
-                        <input type="number" id="divideOne" />
+                        <input
+                            type="number"
+                            value={multiplyOne}
+                            onChange={e => setMultiplyOne(+e.target.value)}
+                        />
                     </td>
                     <td>
-                        <p>
-                            ÷
-                        </p>
+                        <p>x</p>
                     </td>
                     <td>
-                        <input type="number" id="divideTwo" />
+                        <input
+                            type="number"
+                            value={multiplyTwo}
+                            onChange={e => setMultiplyTwo(+e.target.value)}
+                        />
                     </td>
                     <td>
-                        <button onClick={divide}>=</button> <input type="number" id="divide" />
+                        <button onClick={multiply}>=</button> <input type="number" id="multiply" value={totalMultiply} readOnly />
+                    </td>
+                </tbody>
+
+                <tbody>
+                    <td>
+                        <p>Divide:</p>
+                    </td>
+                    <td>
+                        <input
+                            type="number"
+                            value={divideOne}
+                            onChange={e => setDivideOne(+e.target.value)}
+                        />
+                    </td>
+                    <td>
+                        <p>÷</p>
+                    </td>
+                    <td>
+                        <input
+                            type="number"
+                            value={divideTwo}
+                            onChange={e => setDivideTwo(+e.target.value)}
+                        />
+                    </td>
+                    <td>
+                        <button onClick={divide}>=</button> <input type="number" id="divide" value={totalDivide} readOnly />
                     </td>
                 </tbody>
 
