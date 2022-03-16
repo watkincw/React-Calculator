@@ -91,7 +91,7 @@ function Calculator() {
                     <td>
                         <input
                             type="number"
-                            value={subOne}
+                            value={subTwo}
                             onChange={e => setSubTwo(+e.target.value)}
                         />
                     </td>
